@@ -1,44 +1,44 @@
---21≥‚ 6ø˘ 3¿œ ºˆæ˜≥ªøÎ
---±‚¡∏ πÆπ˝(ø‹∫Œ¡∂¿Œ)
+--21ÎÖÑ 6Ïõî 3Ïùº ÏàòÏóÖÎÇ¥Ïö©
+--Í∏∞Ï°¥ Î¨∏Î≤ï(Ïô∏Î∂ÄÏ°∞Ïù∏)
 select a.employee_id, a.emp_name, b.job_id, b.department_id
 from employees a,
     job_history b
 where a.employee_id = b.employee_id(+)
 and a.department_id = b.department_id(+);
 
---ANSI πÆπ˝(LEFT JOIN)
+--ANSI Î¨∏Î≤ï(LEFT JOIN)
 SELECT a.employee_id, a.emp_name, b.job_id, b.department_id
 FROM employees a
 LEFT OUTER JOIN job_history b
 ON (a.employee_id = b.employee_id
     and a.department_id = b.department_id);
     
---ANSI πÆπ˝(RIGHT JOIN)    
+--ANSI Î¨∏Î≤ï(RIGHT JOIN)    
 SELECT a.employee_id, a.emp_name, b.job_id, b.department_id
 FROM job_history b
 RIGHT OUTER JOIN employees a
 ON (a.employee_id = b.employee_id
     and a.department_id = b.department_id);
     
---OUTER ª˝∑´ ∞°¥…
+--OUTER ÏÉùÎûµ Í∞ÄÎä•
 SELECT a.employee_id, a.emp_name, b.job_id, b.department_id
 FROM employees a
 LEFT JOIN job_history b
 ON (a.employee_id = b.employee_id
     and a.department_id = b.department_id);
     
---WHERE ¿˝ø° ¡∂¿Œ ¡∂∞«¿ª ∏ÌΩ√«œ¡ˆ æ ¿∫ ƒ´≈∏Ω√æ» ¡∂¿Œ¿Ã ¿÷¥¬µ•, ANSI ¡∂¿Œø°º≠¥¬ CROSS ¡∂¿Œ¿Ã∂Û∞Ì «—¥Ÿ.
---±‚¡∏ πÆπ˝
+--WHERE Ï†àÏóê Ï°∞Ïù∏ Ï°∞Í±¥ÏùÑ Î™ÖÏãúÌïòÏßÄ ÏïäÏùÄ Ïπ¥ÌÉÄÏãúÏïà Ï°∞Ïù∏Ïù¥ ÏûàÎäîÎç∞, ANSI Ï°∞Ïù∏ÏóêÏÑúÎäî CROSS Ï°∞Ïù∏Ïù¥ÎùºÍ≥† ÌïúÎã§.
+--Í∏∞Ï°¥ Î¨∏Î≤ï
 SELECT a.employee_id, a.emp_name, b.department_id, b.department_name
 FROM employees a,
     departments b;
     
---ANSI πÆπ˝
+--ANSI Î¨∏Î≤ï
 SELECT a.employee_id, a.emp_name, b.department_id, b.department_name
 FROM employees a
 CROSS JOIN departments b;
 
---≈◊¿Ã∫Ì ª˝º∫ π◊ ∞™ ª¿‘ »ƒ ƒøπ‘
+--ÌÖåÏù¥Î∏î ÏÉùÏÑ± Î∞è Í∞í ÏÇΩÏûÖ ÌõÑ Ïª§Î∞ã
 CREATE TABLE HONG_A (EMP_ID INT);
 CREATE TABLE HONG_B (EMP_ID INT);
 INSERT INTO HONG_A VALUES( 10);
@@ -49,73 +49,73 @@ INSERT INTO HONG_B VALUES( 20);
 INSERT INTO HONG_B VALUES( 30);
 COMMIT;
 
---ø¿∑˘: OUTER-JOINµ» ≈◊¿Ã∫Ì¿∫ 1∞≥∏∏ ¡ˆ¡§«“ ºˆ ¿÷¥Ÿ.
---ø‹∫Œ ¡∂¿Œ ¡∂∞«ø°º≠¥¬ «— ¬ ø°∏∏ (+)∏¶ ∫Ÿ¿œ ºˆ ¿÷¥Ÿ.
+--Ïò§Î•ò: OUTER-JOINÎêú ÌÖåÏù¥Î∏îÏùÄ 1Í∞úÎßå ÏßÄÏ†ïÌï† Ïàò ÏûàÎã§.
+--Ïô∏Î∂Ä Ï°∞Ïù∏ Ï°∞Í±¥ÏóêÏÑúÎäî Ìïú Ï™ΩÏóêÎßå (+)Î•º Î∂ôÏùº Ïàò ÏûàÎã§.
 SELECT a.emp_id, b.emp_id
 FROM hong_a a,
     hong_b b
 WHERE a.emp_id(+) = b.emp_id(+);
 
---FULL JOIN ªÁøÎ
---FULL -> µŒ ≈◊¿Ã∫Ì ∏µŒ∏¶ ø‹∫Œ ¡∂¿Œ ¥ÎªÛø° ≥÷¿ª ºˆ ¿÷¥Ÿ.
+--FULL JOIN ÏÇ¨Ïö©
+--FULL -> Îëê ÌÖåÏù¥Î∏î Î™®ÎëêÎ•º Ïô∏Î∂Ä Ï°∞Ïù∏ ÎåÄÏÉÅÏóê ÎÑ£ÏùÑ Ïàò ÏûàÎã§.
 SELECT a.emp_id, b.emp_id
 FROM hong_a a
 FULL OUTER JOIN hong_b b
 ON (a.emp_id = b.emp_id);
 
---º≠∫Í ƒı∏Æ
---∏ﬁ¿Œƒı∏ÆøÕ¿« ø¨∞¸º∫¿Ã æ¯¥¬ º≠∫Í ƒı∏Æ
---∏ﬁ¿Œ ≈◊¿Ã∫Ì∞˙ ¡∂¿Œ ¡∂∞«¿Ã ∞…∏Æ¡ˆ æ ¿Ω
+--ÏÑúÎ∏å ÏøºÎ¶¨
+--Î©îÏù∏ÏøºÎ¶¨ÏôÄÏùò Ïó∞Í¥ÄÏÑ±Ïù¥ ÏóÜÎäî ÏÑúÎ∏å ÏøºÎ¶¨
+--Î©îÏù∏ ÌÖåÏù¥Î∏îÍ≥º Ï°∞Ïù∏ Ï°∞Í±¥Ïù¥ Í±∏Î¶¨ÏßÄ ÏïäÏùå
 
---º≠∫Í ƒı∏Æø°º≠ ∏’¿˙ ∆Ú±’ ±ﬁø©∏¶ ±∏«— µ⁄ ∏ﬁ¿Œ ƒı∏Æø°º≠¥¬ ¿Ã ∆Ú±’∞™∫∏¥Ÿ ≈´ ªÁø¯¿ª ¡∂»∏
+--ÏÑúÎ∏å ÏøºÎ¶¨ÏóêÏÑú Î®ºÏ†Ä ÌèâÍ∑† Í∏âÏó¨Î•º Íµ¨Ìïú Îí§ Î©îÏù∏ ÏøºÎ¶¨ÏóêÏÑúÎäî Ïù¥ ÌèâÍ∑†Í∞íÎ≥¥Îã§ ÌÅ∞ ÏÇ¨ÏõêÏùÑ Ï°∞Ìöå
 SELECT count(*)
 FROM employees
 WHERE salary >= (SELECT AVG(salary)
     FROM employees);
---¿ß¿« º≠∫Í ƒı∏Æø°º≠ ¥‹¿œ «‡¿ª π›»Ø«ﬂ¡ˆ∏∏ πÿ¿« º≠∫Í ƒı∏Æ¥¬ ø©∑Ø «‡¿ª π›»Ø«ﬂ¥Ÿ.
+--ÏúÑÏùò ÏÑúÎ∏å ÏøºÎ¶¨ÏóêÏÑú Îã®Ïùº ÌñâÏùÑ Î∞òÌôòÌñàÏßÄÎßå Î∞ëÏùò ÏÑúÎ∏å ÏøºÎ¶¨Îäî Ïó¨Îü¨ ÌñâÏùÑ Î∞òÌôòÌñàÎã§.
 SELECT count(*)
 FROM employees
 WHERE department_id IN ( SELECT department_id
                            FROM departments
                           WHERE parent_id IS NULL);
 
---µøΩ√ø° 2∞≥ ¿ÃªÛ¿« ƒ√∑≥ ∞™¿Ã ∞∞¿∫ ∞«¿ª √£∞Ì ¿÷¥Ÿ. 
---IN æ’ø° ¿÷¥¬ ƒ√∑≥ ∞≥ºˆøÕ º≠∫Í ƒı∏Æø°º≠ π›»Ø«œ¥¬ ƒ√∑≥ ∞≥ºˆøÕ ¿Ø«¸¿∫ ∞∞æ∆æﬂ «—¥Ÿ.
+--ÎèôÏãúÏóê 2Í∞ú Ïù¥ÏÉÅÏùò Ïª¨Îüº Í∞íÏù¥ Í∞ôÏùÄ Í±¥ÏùÑ Ï∞æÍ≥† ÏûàÎã§. 
+--IN ÏïûÏóê ÏûàÎäî Ïª¨Îüº Í∞úÏàòÏôÄ ÏÑúÎ∏å ÏøºÎ¶¨ÏóêÏÑú Î∞òÌôòÌïòÎäî Ïª¨Îüº Í∞úÏàòÏôÄ Ïú†ÌòïÏùÄ Í∞ôÏïÑÏïº ÌïúÎã§.
 SELECT employee_id, emp_name, job_id
 FROM employees
 WHERE (employee_id, job_id) IN (SELECT employee_id, job_id
                                 FROM job_history);
 
---¿¸ ªÁø¯¿« ±ﬁø©∏¶ ∆Ú±’ ±›æ◊¿∏∑Œ ∞ªΩ≈(UPDATEπÆ)
+--Ï†Ñ ÏÇ¨ÏõêÏùò Í∏âÏó¨Î•º ÌèâÍ∑† Í∏àÏï°ÏúºÎ°ú Í∞±Ïã†(UPDATEÎ¨∏)
 UPDATE employees
 SET salary = ( SELECT AVG(salary)
                  FROM employees);
                  
---∆Ú±’ ±ﬁø©∫∏¥Ÿ ∏π¿Ã πﬁ¥¬ ªÁø¯ ªË¡¶(DELETEπÆ)
+--ÌèâÍ∑† Í∏âÏó¨Î≥¥Îã§ ÎßéÏù¥ Î∞õÎäî ÏÇ¨Ïõê ÏÇ≠Ï†ú(DELETEÎ¨∏)
 DELETE employees
 WHERE salary >= ( SELECT AVG(salary)
                     FROM employees);
 
---ªÁø¯ ≈◊¿Ã∫Ì¿ª ø¯ ªÛ≈¬∑Œ µ«µπ∑¡ ≥ıµµ∑œ ROLLBACK πÆ¿ª Ω««‡.
+--ÏÇ¨Ïõê ÌÖåÏù¥Î∏îÏùÑ Ïõê ÏÉÅÌÉúÎ°ú ÎêòÎèåÎ†§ ÎÜìÎèÑÎ°ù ROLLBACK Î¨∏ÏùÑ Ïã§Ìñâ.
 ROLLBACK;
 
---ø¨∞¸º∫ ¿÷¥¬ º≠∫Í ƒı∏Æ(∏ﬁ¿Œ ƒı∏ÆøÕ¿« ø¨∞¸º∫¿Ã ¿÷¥¬ º≠∫Í ƒı∏Æ, ¡Ô ∏ﬁ¿Œ ≈◊¿Ã∫Ì ∞˙ ¡∂¿Œ ¡∂∞«¿Ã ∞…∏∞ º≠∫Í ƒı∏Æ)
+--Ïó∞Í¥ÄÏÑ± ÏûàÎäî ÏÑúÎ∏å ÏøºÎ¶¨(Î©îÏù∏ ÏøºÎ¶¨ÏôÄÏùò Ïó∞Í¥ÄÏÑ±Ïù¥ ÏûàÎäî ÏÑúÎ∏å ÏøºÎ¶¨, Ï¶â Î©îÏù∏ ÌÖåÏù¥Î∏î Í≥º Ï°∞Ïù∏ Ï°∞Í±¥Ïù¥ Í±∏Î¶∞ ÏÑúÎ∏å ÏøºÎ¶¨)
 
---º≠∫Í ƒı∏Æ æ»ø°º≠ ∏ﬁ¿Œ ƒı∏Æø°º≠ ªÁøÎµ» ∫Œº≠ ≈◊¿Ã∫Ì¿« ∫Œº≠π¯»£øÕ
---job_history ≈◊¿Ã∫Ì¿« ∫Œº≠π¯»£∞° ∞∞¿∫ ∞«¿ª ¡∂»∏«œ∞Ì ¿÷¥Ÿ.
---EXISTS ø¨ªÍ¿⁄∏¶ ªÁøÎ«œø© º≠∫Í ƒı∏Æ ≥ªø° ¡∂¿Œ ¡∂∞«¿Ã ∆˜«‘µ .
---∞·∞˙∞™¿∫ job_history ≈◊¿Ã∫Ìø° ¿÷¥¬ ∫Œº≠∏∏ ¡∂»∏µ .
+--ÏÑúÎ∏å ÏøºÎ¶¨ ÏïàÏóêÏÑú Î©îÏù∏ ÏøºÎ¶¨ÏóêÏÑú ÏÇ¨Ïö©Îêú Î∂ÄÏÑú ÌÖåÏù¥Î∏îÏùò Î∂ÄÏÑúÎ≤àÌò∏ÏôÄ
+--job_history ÌÖåÏù¥Î∏îÏùò Î∂ÄÏÑúÎ≤àÌò∏Í∞Ä Í∞ôÏùÄ Í±¥ÏùÑ Ï°∞ÌöåÌïòÍ≥† ÏûàÎã§.
+--EXISTS Ïó∞ÏÇ∞ÏûêÎ•º ÏÇ¨Ïö©ÌïòÏó¨ ÏÑúÎ∏å ÏøºÎ¶¨ ÎÇ¥Ïóê Ï°∞Ïù∏ Ï°∞Í±¥Ïù¥ Ìè¨Ìï®Îê®.
+--Í≤∞Í≥ºÍ∞íÏùÄ job_history ÌÖåÏù¥Î∏îÏóê ÏûàÎäî Î∂ÄÏÑúÎßå Ï°∞ÌöåÎê®.
 SELECT a.department_id, a.department_name
 FROM departments a
 WHERE EXISTS( SELECT 1
                 FROM job_history b
                WHERE a.department_id = b.department_id);
 
---job_historyø° ªÁπ¯, ∫Œº≠π¯»£∏∏ ¡∏¿Á«œπ«∑Œ ªÁø¯∏Ì∞˙ ∫Œº≠∏Ì¿ª ∞°¡Æø¿±‚ ¿ß«ÿ
---º≠∫Í ƒı∏Æ∏¶ SELECT ¿˝ø°º≠ ªÁøÎ«ﬂ∞Ì, º≠∫Í ƒı∏Æ æ»¿« WHERE ¿˝ø° ¡∂∞«¿ª √ﬂ∞°«‘.
---SELECT ¿˝ ¿⁄√ºø°º≠µµ ø©∑Ø ∞≥¿« º≠∫Í ƒı∏Æ∏¶ ≥÷¿ª ºˆ ¿÷¿Ω.
---∞¢ º≠∫Í ƒı∏Æ∞° µ∂∏≥¿˚¿Ãπ«∑Œ µŒ ∞≥¿« º≠∫Í ƒı∏Æø°º≠ ªÁøÎµ» ªÁø¯, ∫Œº≠ ≈◊¿Ã∫Ì¿« ∫∞ƒ™¿ª ∏µŒ
---b∑Œ ªÁøÎ«ÿµµ π´πÊ«‘.
+--job_historyÏóê ÏÇ¨Î≤à, Î∂ÄÏÑúÎ≤àÌò∏Îßå Ï°¥Ïû¨ÌïòÎØÄÎ°ú ÏÇ¨ÏõêÎ™ÖÍ≥º Î∂ÄÏÑúÎ™ÖÏùÑ Í∞ÄÏ†∏Ïò§Í∏∞ ÏúÑÌï¥
+--ÏÑúÎ∏å ÏøºÎ¶¨Î•º SELECT Ï†àÏóêÏÑú ÏÇ¨Ïö©ÌñàÍ≥†, ÏÑúÎ∏å ÏøºÎ¶¨ ÏïàÏùò WHERE Ï†àÏóê Ï°∞Í±¥ÏùÑ Ï∂îÍ∞ÄÌï®.
+--SELECT Ï†à ÏûêÏ≤¥ÏóêÏÑúÎèÑ Ïó¨Îü¨ Í∞úÏùò ÏÑúÎ∏å ÏøºÎ¶¨Î•º ÎÑ£ÏùÑ Ïàò ÏûàÏùå.
+--Í∞Å ÏÑúÎ∏å ÏøºÎ¶¨Í∞Ä ÎèÖÎ¶ΩÏ†ÅÏù¥ÎØÄÎ°ú Îëê Í∞úÏùò ÏÑúÎ∏å ÏøºÎ¶¨ÏóêÏÑú ÏÇ¨Ïö©Îêú ÏÇ¨Ïõê, Î∂ÄÏÑú ÌÖåÏù¥Î∏îÏùò Î≥ÑÏπ≠ÏùÑ Î™®Îëê
+--bÎ°ú ÏÇ¨Ïö©Ìï¥ÎèÑ Î¨¥Î∞©Ìï®.
 SELECT a.employee_id,
     ( SELECT b.emp_name
         FROM employees b
@@ -126,11 +126,11 @@ SELECT a.employee_id,
         WHERE a.department_id = b.department_id) AS dep_name
     FROM job_history a;
 
---2∞≥¿« º≠∫Í ƒı∏Æ∞° ªÁøÎµ .
---(SELECT AVG(salary) FROM employees)ø°º≠ ∆Ú±’±ﬁø©∏¶ ±∏«œ∞Ì
---¿Ã ∞™∫∏¥Ÿ ≈´ ±ﬁø©¿« ªÁø¯¿ª ∞…∑Ø≥Ω ¥Ÿ¿Ω(ø¨∞¸º∫ æ¯¥¬ º≠∫Í ƒı∏Æ)
---WHERE a.department_id = b.department_id ø°º≠ ∆Ú±’±ﬁø© ¿ÃªÛ¿ª πﬁ¥¬ 
---ªÁø¯¿Ã º”«— ∫Œº≠∏¶ √ﬂ√‚«— ∞Õ(ø¨∞¸º∫ ¿÷¥¬ º≠∫Í ƒı∏Æ).                                  
+--2Í∞úÏùò ÏÑúÎ∏å ÏøºÎ¶¨Í∞Ä ÏÇ¨Ïö©Îê®.
+--(SELECT AVG(salary) FROM employees)ÏóêÏÑú ÌèâÍ∑†Í∏âÏó¨Î•º Íµ¨ÌïòÍ≥†
+--Ïù¥ Í∞íÎ≥¥Îã§ ÌÅ∞ Í∏âÏó¨Ïùò ÏÇ¨ÏõêÏùÑ Í±∏Îü¨ÎÇ∏ Îã§Ïùå(Ïó∞Í¥ÄÏÑ± ÏóÜÎäî ÏÑúÎ∏å ÏøºÎ¶¨)
+--WHERE a.department_id = b.department_id ÏóêÏÑú ÌèâÍ∑†Í∏âÏó¨ Ïù¥ÏÉÅÏùÑ Î∞õÎäî 
+--ÏÇ¨ÏõêÏù¥ ÏÜçÌïú Î∂ÄÏÑúÎ•º Ï∂îÏ∂úÌïú Í≤É(Ïó∞Í¥ÄÏÑ± ÏûàÎäî ÏÑúÎ∏å ÏøºÎ¶¨).                                  
 SELECT a.department_id, a.department_name
 FROM departments a
 WHERE EXISTS ( SELECT 1
@@ -140,7 +140,7 @@ WHERE EXISTS ( SELECT 1
                                     FROM employees)
             );
 
---∫Œº≠ ≈◊¿Ã∫Ìø°º≠ ªÛ¿ß ∫Œº≠∞° ±‚»π∫Œ(∫Œº≠π¯»£∞° 90)ø° º”«œ¥¬ ªÁø¯µÈ¿« ∫Œº≠∫∞ ∆Ú±’ ±ﬁø©∏¶ ¡∂»∏
+--Î∂ÄÏÑú ÌÖåÏù¥Î∏îÏóêÏÑú ÏÉÅÏúÑ Î∂ÄÏÑúÍ∞Ä Í∏∞ÌöçÎ∂Ä(Î∂ÄÏÑúÎ≤àÌò∏Í∞Ä 90)Ïóê ÏÜçÌïòÎäî ÏÇ¨ÏõêÎì§Ïùò Î∂ÄÏÑúÎ≥Ñ ÌèâÍ∑† Í∏âÏó¨Î•º Ï°∞Ìöå
 SELECT department_id, AVG(salary)
 FROM employees a
 WHERE department_id IN (SELECT department_id
@@ -148,7 +148,7 @@ WHERE department_id IN (SELECT department_id
                           WHERE parent_id=90)
 GROUP BY department_id;
 
---ªÛ¿ß ∫Œº≠∞° ±‚»π∫Œø° º”«œ¥¬ ∏µÁ ªÁø¯¿« ±ﬁø©∏¶ ¿⁄Ω≈¿« ∫Œº≠∫∞ ∆Ú±’±ﬁø©∑Œ ∞ªΩ≈«œ¥¬ ƒı∏Æ.
+--ÏÉÅÏúÑ Î∂ÄÏÑúÍ∞Ä Í∏∞ÌöçÎ∂ÄÏóê ÏÜçÌïòÎäî Î™®Îì† ÏÇ¨ÏõêÏùò Í∏âÏó¨Î•º ÏûêÏã†Ïùò Î∂ÄÏÑúÎ≥Ñ ÌèâÍ∑†Í∏âÏó¨Î°ú Í∞±Ïã†ÌïòÎäî ÏøºÎ¶¨.
 UPDATE employees a
     SET a.salary = (SELECT sal
                                 FROM (SELECT b.department_id, AVG(c.salary) as sal
@@ -162,7 +162,7 @@ UPDATE employees a
                                                     FROM departments
                                                     WHERE parent_id = 90);
 
---∫Œº≠∫∞ √÷º“øÕ √÷¥Î ±›æ◊¿Ã ∏µŒ ∞∞∞Ì, ¿ßø°º≠ ±∏«— ∫Œº≠∫∞ ∆Ú±’∞™¿∏∑Œ ∞ªΩ≈µ«æ˙¿∏π«∑Œ ¡¶¥Î∑Œ √≥∏Æµ .
+--Î∂ÄÏÑúÎ≥Ñ ÏµúÏÜåÏôÄ ÏµúÎåÄ Í∏àÏï°Ïù¥ Î™®Îëê Í∞ôÍ≥†, ÏúÑÏóêÏÑú Íµ¨Ìïú Î∂ÄÏÑúÎ≥Ñ ÌèâÍ∑†Í∞íÏúºÎ°ú Í∞±Ïã†ÎêòÏóàÏúºÎØÄÎ°ú Ï†úÎåÄÎ°ú Ï≤òÎ¶¨Îê®.
 SELECT department_id, MIN(salary), MAX(salary)
 FROM employees a
 WHERE department_id IN (SELECT department_id
@@ -170,7 +170,7 @@ WHERE department_id IN (SELECT department_id
                                         WHERE parent_id = 90)
 GROUP BY department_id;
  
- --MERGEπÆ¿∏∑Œ ∫Ø∞Ê.
+ --MERGEÎ¨∏ÏúºÎ°ú Î≥ÄÍ≤Ω.
 MERGE INTO employees a
 USING (SELECT b.department_id, AVG(c.salary) as sal
                 FROM departments b,
@@ -182,22 +182,22 @@ USING (SELECT b.department_id, AVG(c.salary) as sal
 WHEN MATCHED THEN
 UPDATE SET a.salary = d.sal;
 
---∫Ø∞Ê«— µ•¿Ã≈Õ∏¶ ø¯ ªÛ≈¬∑Œ µ«µπ∑¡ ≥ıµµ∑œ ROLLBACKπÆ¿ª Ω««‡.
+--Î≥ÄÍ≤ΩÌïú Îç∞Ïù¥ÌÑ∞Î•º Ïõê ÏÉÅÌÉúÎ°ú ÎêòÎèåÎ†§ ÎÜìÎèÑÎ°ù ROLLBACKÎ¨∏ÏùÑ Ïã§Ìñâ.
 ROLLBACK;
 
---¿Œ∂Û¿Œ ∫‰(FROM ¿˝ø° ªÁøÎ«œ¥¬ º≠∫Í ƒı∏Æ)
---º≠∫Í ƒı∏Æ∏¶ FROM ¿˝ø° ªÁøÎ«œø© «œ≥™¿« ≈◊¿Ã∫Ì¿Ã≥™ ∫‰√≥∑≥ ªÁøÎ«“ ºˆ ¿÷¥Ÿ.
---∫‰∏¶ «ÿ√º«œ∏È «œ≥™¿« µ∂∏≥¿˚¿Œ SELECTπÆ¿Ãπ«∑Œ FROM ¿˝ø° ªÁøÎ«œ¥¬ º≠∫Í ƒı∏Æµµ «œ≥™¿« ∫‰∑Œ ∫º ºˆ ¿÷æÓ ¿Œ∂Û¿Œ ∫‰∂Û∞Ì «—¥Ÿ.
+--Ïù∏ÎùºÏù∏ Î∑∞(FROM Ï†àÏóê ÏÇ¨Ïö©ÌïòÎäî ÏÑúÎ∏å ÏøºÎ¶¨)
+--ÏÑúÎ∏å ÏøºÎ¶¨Î•º FROM Ï†àÏóê ÏÇ¨Ïö©ÌïòÏó¨ ÌïòÎÇòÏùò ÌÖåÏù¥Î∏îÏù¥ÎÇò Î∑∞Ï≤òÎüº ÏÇ¨Ïö©Ìï† Ïàò ÏûàÎã§.
+--Î∑∞Î•º Ìï¥Ï≤¥ÌïòÎ©¥ ÌïòÎÇòÏùò ÎèÖÎ¶ΩÏ†ÅÏù∏ SELECTÎ¨∏Ïù¥ÎØÄÎ°ú FROM Ï†àÏóê ÏÇ¨Ïö©ÌïòÎäî ÏÑúÎ∏å ÏøºÎ¶¨ÎèÑ ÌïòÎÇòÏùò Î∑∞Î°ú Î≥º Ïàò ÏûàÏñ¥ Ïù∏ÎùºÏù∏ Î∑∞ÎùºÍ≥† ÌïúÎã§.
 
---±‚»π∫Œ(90) ªÍ«œø° ¿÷¥¬ ∫Œº≠ø° º”«— ªÁø¯¿« ∆Ú±’±ﬁø©∫∏¥Ÿ ∏π¿∫ ±ﬁø©∏¶ πﬁ¥¬ ªÁø¯∏Ò∑œ¿ª √ﬂ√‚«— ∞Õ¿Œµ•
---±‚»π∫Œ ªÍ«œ ∆Ú±’±ﬁø©∏¶ ±∏«œ¥¬ ∫Œ∫–¿ª º≠∫Í ƒı∏Æ∑Œ ¿€º∫«ﬂ∞Ì ¿Ã∏¶ FROM ¿˝ø° ¿ßƒ°Ω√≈¥.
+--Í∏∞ÌöçÎ∂Ä(90) ÏÇ∞ÌïòÏóê ÏûàÎäî Î∂ÄÏÑúÏóê ÏÜçÌïú ÏÇ¨ÏõêÏùò ÌèâÍ∑†Í∏âÏó¨Î≥¥Îã§ ÎßéÏùÄ Í∏âÏó¨Î•º Î∞õÎäî ÏÇ¨ÏõêÎ™©Î°ùÏùÑ Ï∂îÏ∂úÌïú Í≤ÉÏù∏Îç∞
+--Í∏∞ÌöçÎ∂Ä ÏÇ∞Ìïò ÌèâÍ∑†Í∏âÏó¨Î•º Íµ¨ÌïòÎäî Î∂ÄÎ∂ÑÏùÑ ÏÑúÎ∏å ÏøºÎ¶¨Î°ú ÏûëÏÑ±ÌñàÍ≥† Ïù¥Î•º FROM Ï†àÏóê ÏúÑÏπòÏãúÌÇ¥.
 SELECT a.employee_id, a.emp_name, b.department_id, b.department_name
 FROM employees a,
             departments b,
             (SELECT AVG(c.salary) AS avg_salary
                 FROM departments b,
                             employees c
-                WHERE b.parent_id = 90 -- ±‚»π∫Œ
+                WHERE b.parent_id = 90 -- Í∏∞ÌöçÎ∂Ä
                 AND b.department_id = c.department_id) d
     WHERE a.department_id = b.department_id
         AND a.salary > d.avg_salary;
@@ -208,10 +208,10 @@ FROM (SELECT a.sales_month, ROUND(AVG(a.amount_sold)) AS month_avg
             FROM sales a,
                        customers b,
                        countries c
-            WHERE a.sales_month BETWEEN '2200001' AND '200012'
+            WHERE a.sales_month BETWEEN '200001' AND '200012'
                 AND a.cust_id = b.CUST_ID
                 AND b.COUNTRY_ID = c.COUNTRY_ID
-                AND c.COUNTRY_NAME = 'Italy' -- ¿Ã≈ª∏Ææ∆
+                AND c.COUNTRY_NAME = 'Italy' -- Ïù¥ÌÉàÎ¶¨ÏïÑ
             GROUP BY a.sales_month
             ) a,
             ( SELECT ROUND(AVG(a.amount_sold)) AS year_avg
